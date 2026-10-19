@@ -1,0 +1,60 @@
+# --- Secrets & local configuration ---
+.env
+.env.*
+!.env.example
+configs/config.yaml
+configs/*.local.yaml
+*.pem
+*.key
+*.crt
+
+# --- Go ---
+/backend/bin/
+/backend/tmp/
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.test
+*.out
+coverage.*
+go.work
+go.work.sum
+
+# --- Node / Next.js (frontend) ---
+node_modules/
+.next/
+out/
+build/
+dist/
+.turbo/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+*.tsbuildinfo
+next-env.d.ts
+
+# --- Test & tooling output ---
+/tests/load/results/
+/test-results/
+/playwright-report/
+
+# --- Local data volumes (Docker) ---
+/data/
+/volumes/
+
+# --- Personal data from interviews (keep only anonymized notes) ---
+/docs/02-relevance-evidence/raw/
+*.m4a
+*.mp3
+*.wav
+
+# --- IDE / OS ---
+.idea/
+.vscode/*
+!.vscode/extensions.json
+*.swp
+.DS_Store
+Thumbs.db
