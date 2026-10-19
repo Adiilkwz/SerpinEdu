@@ -6,7 +6,7 @@
 | Item                  | Details                                                              |
 | --------------------- | -------------------------------------------------------------------- |
 | Project title         | Development of a Management System of Educational Electronic Courses |
-| Product name          |                                                                      |
+| Product name          | SerpinEdu                                                            |
 | Team members          | Yerassyl Kuanyshov, Adil Ramazan                                     |
 | Supervisor            | Khaimuldin Askar                                                     |
 | University            | Astana IT University                                                 |
