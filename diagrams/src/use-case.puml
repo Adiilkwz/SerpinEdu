@@ -1,0 +1,119 @@
+@startuml use-case
+' Use case diagram for SerpinEdu.
+' Use case IDs (UCnn) are traced to functional requirements in
+' docs/07-architecture/architecture-description.md, section 4.
+
+left to right direction
+skinparam packageStyle rectangle
+skinparam shadowing false
+skinparam usecase {
+  BackgroundColor #F8FAFC
+  BorderColor #1E40AF
+}
+skinparam actorBorderColor #111827
+
+title Use Case Diagram — SerpinEdu
+
+actor Guest
+actor Student
+actor Author
+actor Administrator
+actor "Email service" as Email <<system>>
+actor "Video hosting\n(YouTube / Vimeo)" as Video <<system>>
+
+Student -up-|> Guest
+Author -up-|> Student
+
+rectangle SerpinEdu {
+  package "Catalog and account" {
+    usecase "UC01 Browse and search\nthe catalog" as UC01
+    usecase "UC02 View a course page" as UC02
+    usecase "UC03 Watch a preview lesson" as UC03
+    usecase "UC04 Register and\nconfirm email" as UC04
+    usecase "UC05 Log in and\nreset password" as UC05
+    usecase "UC06 Edit profile" as UC06
+  }
+
+  package "Learning" {
+    usecase "UC07 Enrol in a course" as UC07
+    usecase "UC08 Pay for a course\n(test mode)" as UC08
+    usecase "UC09 Study a lesson" as UC09
+    usecase "UC10 Take a test" as UC10
+    usecase "UC11 Update gamification\nprogress" as UC11
+    usecase "UC12 Get a certificate" as UC12
+    usecase "UC13 Ask a question\nunder a lesson" as UC13
+    usecase "UC14 Rate and review\na course" as UC14
+    usecase "UC15 Report content" as UC15
+    usecase "UC16 View my courses\nand purchases" as UC16
+  }
+
+  package "Gamification and notifications" {
+    usecase "UC17 View profile, level,\nstreak and achievements" as UC17
+    usecase "UC18 View leaderboards" as UC18
+    usecase "UC19 View notifications" as UC19
+  }
+
+  package "Authoring" {
+    usecase "UC20 Apply to become\nan author" as UC20
+    usecase "UC21 Create and edit\na course" as UC21
+    usecase "UC22 Create a test" as UC22
+    usecase "UC23 Submit a course\nfor moderation" as UC23
+    usecase "UC24 View author dashboard" as UC24
+    usecase "UC25 Answer student\nquestions" as UC25
+  }
+
+  package "Administration" {
+    usecase "UC26 Moderate courses" as UC26
+    usecase "UC27 Review author\napplications" as UC27
+    usecase "UC28 Resolve reports" as UC28
+    usecase "UC29 Manage categories" as UC29
+    usecase "UC30 Configure platform\nsettings" as UC30
+    usecase "UC31 Manage achievements" as UC31
+  }
+}
+
+Guest --> UC01
+Guest --> UC02
+Guest --> UC03
+Guest --> UC04
+Guest --> UC05
+
+Student --> UC06
+Student --> UC07
+Student --> UC09
+Student --> UC10
+Student --> UC12
+Student --> UC13
+Student --> UC14
+Student --> UC15
+Student --> UC16
+Student --> UC17
+Student --> UC18
+Student --> UC19
+Student --> UC20
+
+Author --> UC21
+Author --> UC22
+Author --> UC23
+Author --> UC24
+Author --> UC25
+
+Administrator --> UC26
+Administrator --> UC27
+Administrator --> UC28
+Administrator --> UC29
+Administrator --> UC30
+Administrator --> UC31
+
+UC08 .> UC07 : <<extend>>\n(paid course)
+UC09 .> UC11 : <<include>>
+UC10 .> UC11 : <<include>>
+
+UC04 --> Email
+UC05 --> Email
+UC08 --> Email
+UC26 --> Email
+UC03 --> Video
+UC09 --> Video
+
+@enduml

@@ -1,0 +1,75 @@
+@startuml component
+' Component diagram (draft, C4 level 3) for SerpinEdu.
+' Backend components correspond to the folders in backend/internal/.
+!include <C4/C4_Component>
+
+title Component Diagram (draft) — SerpinEdu
+
+Person(user, "User", "Guest, student, author or administrator in a browser")
+
+System_Ext(video, "Video hosting", "YouTube / Vimeo")
+System_Ext(smtp, "Email service", "SMTP")
+
+Container(web, "Web application", "Next.js, React, TypeScript", "Server-rendered public pages and the interface for all roles; EN / RU")
+
+Container_Boundary(api, "API application (Go, cmd/api)") {
+  Component(http, "HTTP server", "platform/httpserver", "REST endpoints from openapi.yaml; JWT authentication; role checks")
+
+  Component(auth, "auth", "Go module", "Registration, email confirmation, login, tokens, password reset")
+  Component(usr, "user", "Go module", "Profile, roles, time zone, author applications")
+  Component(catalog, "catalog", "Go module", "Categories, search and filters, home page collections")
+  Component(course, "course", "Go module", "Courses, modules, lessons, video links, attachments, statuses, author dashboard")
+  Component(quiz, "quiz", "Go module", "Tests, questions, attempts, scoring, question statistics")
+  Component(enrollment, "enrollment", "Go module", "Enrolments and access to courses")
+  Component(learning, "learning", "Go module", "Lesson completion, course progress, course completion")
+  Component(payment, "payment", "Go module", "Simulated payments, purchases, commission, author income")
+  Component(gamification, "gamification", "Go module", "XP, levels, streaks, achievement rules, leaderboards")
+  Component(certificate, "certificate", "Go module", "Certificate records and numbers")
+  Component(review, "review", "Go module", "Ratings and reviews")
+  Component(qna, "qna", "Go module", "Questions under lessons and answers")
+  Component(moderation, "moderation", "Go module", "Course moderation and reports")
+  Component(notification, "notification", "Go module", "In-app notifications and email requests")
+
+  Component(queue, "Job queue", "platform/queue", "Writes background jobs to PostgreSQL in the same transaction")
+  Component(storage, "File storage client", "platform/storage", "Uploads files, issues temporary download links")
+}
+
+Container(worker, "Worker", "Go, cmd/worker", "Runs background jobs: PDF certificates, emails")
+ContainerDb(db, "Database", "PostgreSQL", "All data; one schema, tables owned by modules; job table")
+ContainerDb(files, "Object storage", "MinIO (S3-compatible)", "Course covers, lesson attachments, PDF certificates")
+
+Rel(user, web, "Uses", "HTTPS")
+Rel(user, video, "Plays videos in the embedded player", "HTTPS")
+Rel(web, http, "Calls", "REST / JSON")
+
+Rel(auth, usr, "Creates users, reads roles")
+Rel(catalog, course, "Reads published courses")
+Rel(review, enrollment, "Checks enrolment")
+Rel(payment, enrollment, "Grants access after a successful payment")
+Rel(quiz, learning, "Test results")
+Rel(learning, enrollment, "Checks access")
+Rel(learning, gamification, "Learning events, same transaction")
+Rel(learning, certificate, "Course completed")
+Rel(gamification, notification, "Level reached, achievement earned")
+Rel(moderation, course, "Publishes or rejects")
+Rel(moderation, notification, "Moderation result")
+Rel(qna, notification, "Answer posted")
+Rel(certificate, queue, "PDF generation job")
+Rel(notification, queue, "Email jobs")
+Rel(course, storage, "Covers, attachments")
+
+Rel(api, db, "Reads and writes", "SQL")
+Rel(storage, files, "Stores files", "S3 API")
+Rel(worker, db, "Takes jobs, saves results", "SQL")
+Rel(worker, files, "Saves PDF certificates", "S3 API")
+Rel(worker, smtp, "Sends emails", "SMTP")
+
+note right of http
+  Routes every request to the handlers
+  of the owning module (arrows omitted).
+  Modules call each other only through
+  their public Go interfaces (NFR-MNT-01).
+end note
+
+SHOW_LEGEND()
+@enduml
