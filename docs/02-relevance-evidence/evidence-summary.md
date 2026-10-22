@@ -106,17 +106,25 @@ Reasons why each learner left the last unfinished course (A3), and the author's 
 
 ## 5. Implications for the requirements
 
-These are proposals for the team. They are not yet applied to [`functional-requirements.md`](../06-requirements/functional-requirements.md).
+The team reviewed the findings on 22.10.2026. Accepted changes are applied in [`functional-requirements.md`](../06-requirements/functional-requirements.md), where the interviews are cited as sources `I-R01` … `I-R05`.
 
-| # | Finding | Evidence | Proposal | Requirement |
-|---|---|---|---|---|
-| 1 | A streak that resets after one missed day is seen as punishing | R01–R05 | Keep the daily streak but add a recovery rule (e.g. a limited number of "freeze" days), or add weekly goals. The exact rule is for the team to decide | FR-GAM-04, FR-GAM-05 |
-| 2 | Forced public leaderboards cause anxiety for some learners | R01, R02, R05 (R03, R04 positive) | Let a student hide themselves from public leaderboards while still seeing their own rank; consider a leaderboard per course | FR-GAM-12, new |
-| 3 | Some learners want to learn without game elements | R01 (R03, R05 cautious) | New requirement: a student can hide gamification elements in the profile settings | New FR-GAM |
-| 4 | Only competence-based achievements are valued | R01–R05 | Prefer result-based achievements such as "Perfect test"; review "7 days in a row". FR-GAM-06 already allows adding achievements without code changes | FR-GAM-08 |
-| 5 | Authors need to see where students fail | R05 | Extend the author dashboard with the share of wrong answers per test question | FR-AUT-09 |
-| 6 | Outdated content makes learners stop | R02, R04 | Show the date of the last course update on the course page | FR-CAT-05 |
-| 7 | Already covered: unlimited attempts, automatic test grading, course progress, certificates, Q&A with the author | R03, R04, R05 | No change needed | FR-AUT-05, FR-LRN-06, FR-LRN-07, FR-LRN-09, FR-LRN-10, FR-AUT-11 |
+| # | Finding | Evidence | Proposal | Requirement | Decision |
+|---|---|---|---|---|---|
+| 1 | A streak that resets after one missed day is seen as punishing | R01–R05 | Keep the daily streak but add a recovery rule (e.g. a limited number of "freeze" days), or add weekly goals | FR-GAM-04, FR-GAM-05 | Rejected for version 1 (see below) |
+| 2 | Forced public leaderboards cause anxiety for some learners | R01, R02, R05 (R03, R04 positive) | Let a student hide themselves from public leaderboards while still seeing their own rank; consider a leaderboard per course | FR-GAM-12, new | Rejected for version 1 (see below) |
+| 3 | Some learners want to learn without game elements | R01 (R03, R05 cautious) | New requirement: a student can hide gamification elements in the profile settings | New FR-GAM | Rejected for version 1 (see below) |
+| 4 | Only competence-based achievements are valued | R01–R05 | Prefer result-based achievements such as "Perfect test"; review "7 days in a row" | FR-GAM-08 | Rejected for version 1 (see below) |
+| 5 | Authors need to see where students fail | R05 | Extend the author dashboard with the share of wrong answers per test question | FR-AUT-09 | **Accepted:** FR-AUT-09 extended |
+| 6 | Outdated content makes learners stop | R02, R04 | Show the date of the last course update on the course page | FR-CAT-05 | Rejected: major content changes are published by the author as a new course, so the course page does not need a "last updated" date |
+| 7 | Already covered: unlimited attempts, automatic test grading, course progress, certificates, Q&A with the author, weekly leaderboard | R03, R04, R05 | No change needed | FR-AUT-05, FR-LRN-06, FR-LRN-07, FR-LRN-09, FR-LRN-10, FR-AUT-11, FR-GAM-10 | Interviews added as sources |
+
+**Reasons for rejecting proposals 1–4.** The daily streak, the public weekly leaderboard and the initial achievement set are the core of the gamification subsystem. Hypothesis H3 is tested by building and evaluating these mechanics as specified, so they are kept for version 1. The sample of five students is too small to change the core design, while the literature review reports positive average effects of gamification (S3–S10). Part of the concerns is already addressed by the design:
+
+- the streak counts learning activity (a completed lesson or a submitted test attempt), not log-ins, by the student's own local date (FR-GAM-04);
+- the weekly leaderboard starts again every Monday, so every student gets a new chance each week (FR-GAM-10);
+- achievements are stored as rules in the database and can be changed without code changes (FR-GAM-06).
+
+The concerns about pressure from streaks and leaderboards will be checked during the evaluation of the system (DIP-11).
 
 ## 6. Limitations
 
@@ -129,6 +137,6 @@ These are proposals for the team. They are not yet applied to [`functional-requi
 
 ## 7. Next steps
 
-1. Decide on proposals 1–6 in section 5 and update the requirements.
-2. Add the interview source code to the requirements (e.g. `I-R01` … `I-R05`) for the requirements affected by section 5.
+1. Apply the accepted proposal 5 and the interview source codes `I-R01` … `I-R05` in the requirements (DIP-7).
+2. Include questions about pressure from streaks and leaderboards in the evaluation plan (DIP-11).
 3. Update the hypothesis statuses in the project proposal according to section 3.
