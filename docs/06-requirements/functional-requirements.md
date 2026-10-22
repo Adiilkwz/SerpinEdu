@@ -54,7 +54,7 @@ Acceptance criteria for every requirement are given in [acceptance-criteria.md](
 | FR-AUT-01 | A student can apply to become an author; after approval by an administrator the user receives the author role | Must | P |
 | FR-AUT-02 | An author can create a course with title, description, category, level, course language, target audience (e.g. age group), cover image and price; price 0 means a free course | Must | P |
 | FR-AUT-03 | An author can add, edit, delete and reorder modules and lessons within a course | Must | P |
-| FR-AUT-04 | A lesson has one of three types: video, text or test | Must | P |
+| FR-AUT-04 | A lesson has one of three types: video, text or test. A video lesson contains a link to a video on YouTube or Vimeo | Must | P |
 | FR-AUT-05 | An author can create a test with questions, answer options (one or several correct), a passing score (percentage) and an attempt limit (or unlimited attempts) | Must | P, I-R05 |
 | FR-AUT-06 | An author can mark one lesson of a course as a preview lesson | Should | P |
 | FR-AUT-07 | An author can submit a course for moderation. Course statuses: Draft → Pending review → Published or Rejected; a rejected course can be edited and resubmitted | Must | P, C-U1 |
@@ -70,7 +70,7 @@ Acceptance criteria for every requirement are given in [acceptance-criteria.md](
 | FR-LRN-01 | A student can enrol in a free course without payment | Must | P |
 | FR-LRN-02 | A student can enrol in a paid course only after a successful payment (FR-PAY-01) | Must | P |
 | FR-LRN-03 | An enrolled student can open lessons of the course; the lesson page shows the content by lesson type and links to the previous and next lessons | Must | P |
-| FR-LRN-04 | Video lessons are played in a built-in video player with play, pause and seek | Must | P |
+| FR-LRN-04 | Video lessons are played in the YouTube or Vimeo player embedded in the lesson page, with play, pause and seek | Must | P |
 | FR-LRN-05 | A student can mark a video or text lesson as completed | Must | P |
 | FR-LRN-06 | A student can take a test: the score is calculated automatically, the test is passed if the score reaches the passing score, and the number of attempts is limited by the test settings | Must | P, I-R03, I-R04 |
 | FR-LRN-07 | The system shows course progress as the percentage of completed lessons | Must | P, L-S3, I-R03, I-R04 |
