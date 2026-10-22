@@ -1,0 +1,34 @@
+@startuml system-context
+' System context diagram (C4 level 1) for SerpinEdu.
+' Rendered with PlantUML and its bundled C4 library.
+!include <C4/C4_Context>
+
+title System Context Diagram — SerpinEdu
+
+Person(guest, "Guest", "Unregistered visitor")
+Person(student, "Student", "Registered learner")
+Person(author, "Author", "Creates and sells courses")
+Person(admin, "Administrator", "Moderates content and configures the platform")
+
+System(serpinedu, "SerpinEdu", "Open course marketplace with gamification: catalog, courses and tests, enrolment, simulated payments, certificates, XP, levels, streaks, achievements and leaderboards")
+
+System_Ext(email, "Email service", "SMTP server that delivers emails to users")
+System_Ext(video, "Video hosting", "YouTube or Vimeo: hosts lesson videos and provides the embedded player")
+
+Rel(guest, serpinedu, "Browses the catalog and course pages, opens preview lessons, registers", "HTTPS")
+Rel(student, serpinedu, "Enrols, pays in test mode, studies lessons, takes tests, follows XP, streak and leaderboards", "HTTPS")
+Rel(author, serpinedu, "Creates courses and tests, submits them for moderation, answers questions, views statistics and income", "HTTPS")
+Rel(admin, serpinedu, "Moderates courses, author applications and reports; manages categories, achievements and settings", "HTTPS")
+
+Rel(serpinedu, email, "Sends email confirmation, password reset, moderation result and purchase emails", "SMTP")
+Rel(author, video, "Uploads lesson videos and copies their links", "HTTPS")
+Rel(student, video, "Plays lesson videos in the player embedded in the lesson page", "HTTPS")
+
+note right of serpinedu
+  No external payment provider:
+  payments are simulated inside
+  the system (test mode, USD).
+end note
+
+SHOW_LEGEND()
+@enduml
