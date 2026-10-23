@@ -4,7 +4,7 @@ This template is used for every user interview in `docs/02-relevance-evidence/in
 
 ## Interview protocol
 
-- **Format:** online call or face-to-face, 15–25 minutes.
+- **Format:** online call or face-to-face, 15–25 minutes. If a call is not possible, the respondent can answer the questions in writing (e.g. in a messenger).
 - **Language:** the interview can be conducted in any language; notes in the repository are written in English.
 - **Consent:** before starting, the interviewer explains the purpose of the interview and asks for consent (see the script below). Interviews are not recorded unless the respondent agrees.
 - **Anonymity:** no names, contacts or other personal data are stored in the repository. Respondents are referred to as "Respondent N".
@@ -26,7 +26,7 @@ This template is used for every user interview in `docs/02-relevance-evidence/in
 | Respondent | Respondent NN |
 | Date | DD.MM.YYYY |
 | Interviewer | Name of the team member |
-| Format | Online call / face-to-face |
+| Format | Online call / face-to-face / written (messenger) |
 | Duration | NN minutes |
 | Consent obtained | Yes / No |
 
