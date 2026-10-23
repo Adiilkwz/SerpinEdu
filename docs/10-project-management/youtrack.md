@@ -8,10 +8,12 @@
 Every meaningful work item is created as a YouTrack task. Each task contains:
 
 - **Assignee** — the team member responsible for the task;
+- **Description** — a short explanation of what the task is about and why it is needed;
 - **Priority**;
 - **Due date**;
 - **Expected outcome** — what will be produced;
-- **Acceptance criteria** — conditions that must be met before the task is closed.
+- **Acceptance criteria** — conditions that must be met before the task is closed;
+- **Links** — the pull request and related materials (e.g. the prototype or the Miro board).
 
 A task is marked as done only when its acceptance criteria are met.
 

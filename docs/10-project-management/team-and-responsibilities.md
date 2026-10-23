@@ -4,8 +4,8 @@
 
 | Member | Role | Areas of responsibility |
 |---|---|---|
-| **Yerassyl Kuanyshov** | Frontend developer | Frontend (React + Next.js); authentication and authorization API; API testing |
-| **Adil Ramazan** | Backend developer, architect | Database (PostgreSQL); backend development (Go); system architecture |
+| **Yerassyl Kuanyshov** | Frontend developer, architect | Frontend (React + Next.js); authentication and authorization API; API testing; system architecture |
+| **Adil Ramazan** | Backend developer | Database (PostgreSQL); backend development (Go); architecture diagrams |
 | **Khaimuldin Askar** | Supervisor | Reviews key deliverables and decisions; provides feedback at agreed checkpoints |
 
 ## Responsibilities by project area
@@ -17,7 +17,8 @@
 | API testing | Yerassyl Kuanyshov | Adil Ramazan |
 | Database schema and migrations | Adil Ramazan | Yerassyl Kuanyshov |
 | Backend modules (catalog, courses, learning, gamification, notifications, etc.) | Adil Ramazan | Yerassyl Kuanyshov |
-| System architecture and diagrams | Adil Ramazan | Yerassyl Kuanyshov |
+| System architecture: architecture description and ADRs | Yerassyl Kuanyshov | Adil Ramazan |
+| Architecture diagrams | Adil Ramazan | Yerassyl Kuanyshov |
 | Project documentation | Assigned per task in YouTrack | The other team member |
 
 ## Completed tasks (pre-defense 1)
@@ -28,15 +29,22 @@ The assignee of each task in YouTrack is the same person who authored its commit
 |---|---|---|
 | DIP-1 | Repository workflow (`.gitignore`, `.env.example`, PR template, contributing guide) | Yerassyl Kuanyshov |
 | DIP-2 | Project proposal and scope | Yerassyl Kuanyshov |
+| DIP-3 | User interviews and evidence summary (interviews conducted by both team members) | Adil Ramazan |
 | DIP-4 | Literature review and sources analysis table | Yerassyl Kuanyshov |
 | DIP-5 | Existing systems comparison | Adil Ramazan |
 | DIP-6 | Technology comparison | Adil Ramazan |
+| DIP-7 | Functional and non-functional requirements, acceptance criteria | Adil Ramazan |
+| DIP-8 | Architecture diagrams (system context, use case, component) | Yerassyl Kuanyshov |
+| DIP-9 | Architecture description and ADRs | Yerassyl Kuanyshov |
+| DIP-10 | UI prototype and API examples | Yerassyl Kuanyshov |
+| DIP-11 | Verification and evaluation plan | Adil Ramazan |
+| DIP-12 | Team roles, milestones, risks and dependencies | Adil Ramazan |
 
 Current assignees, priorities and deadlines of all tasks are maintained in [YouTrack](youtrack.md).
 
 ## Working rules
 
-- Every meaningful work item is a YouTrack task with an assignee, expected outcome, acceptance criteria and deadline.
+- Every meaningful work item is a YouTrack task with an assignee, a short description, expected outcome, acceptance criteria, deadline and links to the pull request and related materials.
 - Each task is developed in its own branch named after the task ID (e.g. `DIP-7-requirements`).
 - Each member commits from their own GitHub account with identifiable author details.
 - Changes reach `main` only through a pull request reviewed and approved by the other team member.
