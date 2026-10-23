@@ -4,8 +4,8 @@
 
 | Member | Role | Areas of responsibility |
 |---|---|---|
-| **Yerassyl Kuanyshov** | Frontend developer, architect | Frontend (React + Next.js); authentication and authorization API; API testing; system architecture |
-| **Adil Ramazan** | Backend developer | Database (PostgreSQL); backend development (Go); architecture diagrams |
+| **Yerassyl Kuanyshov** | Frontend developer, architect | Frontend (React + Next.js); authentication and authorization API; API testing; system architecture; architecture diagrams (together with Adil Ramazan) |
+| **Adil Ramazan** | Backend developer | Database (PostgreSQL); backend development (Go); architecture diagrams (together with Yerassyl Kuanyshov) |
 | **Khaimuldin Askar** | Supervisor | Reviews key deliverables and decisions; provides feedback at agreed checkpoints |
 
 ## Responsibilities by project area
@@ -18,7 +18,7 @@
 | Database schema and migrations | Adil Ramazan | Yerassyl Kuanyshov |
 | Backend modules (catalog, courses, learning, gamification, notifications, etc.) | Adil Ramazan | Yerassyl Kuanyshov |
 | System architecture: architecture description and ADRs | Yerassyl Kuanyshov | Adil Ramazan |
-| Architecture diagrams | Adil Ramazan | Yerassyl Kuanyshov |
+| Architecture diagrams | Yerassyl Kuanyshov, Adil Ramazan | Each reviews the other's part |
 | Project documentation | Assigned per task in YouTrack | The other team member |
 
 ## Completed tasks (pre-defense 1)
@@ -34,7 +34,7 @@ The assignee of each task in YouTrack is the same person who authored its commit
 | DIP-5 | Existing systems comparison | Adil Ramazan |
 | DIP-6 | Technology comparison | Adil Ramazan |
 | DIP-7 | Functional and non-functional requirements, acceptance criteria | Adil Ramazan |
-| DIP-8 | Architecture diagrams (system context, use case, component) | Yerassyl Kuanyshov |
+| DIP-8 | Architecture diagrams (system context, use case, component); part of the diagrams was prepared by Adil Ramazan | Yerassyl Kuanyshov |
 | DIP-9 | Architecture description and ADRs | Yerassyl Kuanyshov |
 | DIP-10 | UI prototype and API examples | Yerassyl Kuanyshov |
 | DIP-11 | Verification and evaluation plan | Adil Ramazan |
