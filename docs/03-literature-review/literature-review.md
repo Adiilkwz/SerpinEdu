@@ -77,7 +77,7 @@ These studies confirm that learners are dissatisfied with some aspects of existi
 | H3 | Gamification makes learning more interesting and motivates learners to continue | **Partially supported** — positive average effects, but smaller for engagement and online settings, highly variable, subject to the novelty effect and possible negative effects | S3–S10 |
 | H4 | Learning on existing platforms is perceived as monotonous | **Not directly confirmed** — learners are dissatisfied with the learning process, assessment and support, but monotony itself was not measured | S11, S12 |
 
-The status of H2 and H4 will also be checked in the user interviews (`docs/02-relevance-evidence/`).
+The user interviews add first-hand evidence for all four hypotheses. The combined status after the review and the interviews is given in the [evidence summary](../02-relevance-evidence/evidence-summary.md), section 3.
 
 ## 8. Implications for the project
 
@@ -88,11 +88,13 @@ The review leads to the following considerations, which the project takes into a
 3. **Progress must be visible.** Learners who left a course explicitly asked for progress indicators, milestones and badges (S3).
 4. **Risks of competition.** Leaderboards and badges are the elements most often associated with negative effects (S7, S9). The weekly leaderboard, which resets every Monday, gives learners a recurring chance to rank higher, and showing each student's own position avoids a view in which only the top learners are visible. These choices are consistent with the principle of maximising success experiences (S9), but their effect has not been tested.
 5. **Preventing gaming the system.** Since cheating and gaming the system are frequent negative effects (S7), XP rules should not allow earning XP repeatedly for the same activity.
-6. **Long enough evaluation.** Because of the novelty effect (S8), a short evaluation may overestimate or underestimate the effect of gamification; this is taken into account in the verification and evaluation plan.
+6. **Long enough evaluation.** Because of the novelty effect (S8), a short evaluation may overestimate or underestimate the effect of gamification. The user study in the [verification and evaluation plan](../09-verification-plan/verification-and-evaluation-plan.md) therefore lasts four weeks and reports activity per week.
 
-**Open questions for the requirements:**
-- How strict should the daily streak be? Learners' requests for pausing without penalty (S3) suggest considering a mechanism that protects the streak during short breaks.
-- Should leaderboards include smaller groups (e.g. per course) in addition to weekly and all-time rankings (S9)?
+**Open questions for the requirements and the team's decisions:**
+- How strict should the daily streak be? Learners' requests for pausing without penalty (S3) suggest considering a mechanism that protects the streak during short breaks. **Decision:** the user interviews raised the same point, but the team kept the strict daily streak for version 1 (FR-GAM-04); the pressure it creates is measured in the user study (evaluation question EQ2).
+- Should leaderboards include smaller groups (e.g. per course) in addition to weekly and all-time rankings (S9)? **Decision:** not included in version 1; the weekly and all-time leaderboards are kept (FR-GAM-10 – FR-GAM-12), and their effect is measured in the user study (EQ2).
+
+The reasons for these decisions are given in the [evidence summary](../02-relevance-evidence/evidence-summary.md), section 5.
 
 ## 9. Research gaps and limitations of the review
 

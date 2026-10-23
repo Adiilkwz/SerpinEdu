@@ -12,7 +12,7 @@ This document compares alternatives for the key technology decisions of the proj
 
 ## 2. Requirement drivers
 
-The decisions are evaluated against drivers taken from the project scope and engineering complexity described in the [project proposal](../01-proposal/project-proposal.md). Detailed requirements will be specified in `docs/06-requirements/`.
+The decisions are evaluated against drivers taken from the project scope and engineering complexity described in the [project proposal](../01-proposal/project-proposal.md). The detailed requirements were specified later in [`docs/06-requirements/`](../06-requirements/functional-requirements.md).
 
 | ID | Driver | Source in the proposal |
 |---|---|---|
@@ -108,7 +108,7 @@ For each decision, 2–3 realistic alternatives were compared against criteria d
 
 **Related constraints from the proposal**
 - Payments work only in test mode (simulated payments in USD); no external payment gateway is compared.
-- The approach to video storage and delivery will be decided during design.
+- The approach to video storage and delivery was decided during the architecture design: lesson videos are hosted on YouTube or Vimeo ([ADR-0004](../07-architecture/adr/0004-lesson-videos-on-youtube-or-vimeo.md)), and other files are stored in S3-compatible object storage ([ADR-0005](../07-architecture/adr/0005-object-storage-for-files.md)).
 
 **Traceability: drivers → decisions**
 
