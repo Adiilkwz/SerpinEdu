@@ -1,4 +1,3 @@
-
 # Project Proposal
 
 ## 1. General information
@@ -20,16 +19,16 @@ The project proposes an open course marketplace where authors publish courses an
 
 ### Hypotheses and their status
 
-At this stage the problem statement is based on the team's observations. Each statement below will be checked through the literature review, user interviews and the existing systems comparison.
+The problem statement started from the team's observations. Each statement was then checked through the literature review, the user interviews and the existing systems comparison. The current status is:
 
-| #  | Statement                                                                       | Status         | To be checked through                        |
-| -- | ------------------------------------------------------------------------------- | -------------- | -------------------------------------------- |
-| H1 | Many learners abandon online courses before completion                          | Assumption     | Literature review                            |
-| H2 | A common reason for abandoning courses is loss of interest                      | Assumption     | Literature review, user interviews           |
-| H3 | Gamification makes learning more interesting and motivates learners to continue | Assumption     | Literature review, user interviews           |
-| H4 | Learning on existing platforms (Coursera, Udemy) is perceived as monotonous     | Team's opinion | User interviews, existing systems comparison |
+| # | Statement | Status | Evidence |
+|---|---|---|---|
+| H1 | Many learners abandon online courses before completion | **Supported** — completion depends strongly on the learner's goal and planning | Literature review (S1–S3); interviews R01, R05 |
+| H2 | A common reason for abandoning courses is loss of interest | **Partially supported** — loss of interest is one of the reasons, linked to passive, text- or slide-based formats; external time pressure is mentioned more often in the literature | Literature review (S1, S3); interviews R01, R02 |
+| H3 | Gamification makes learning more interesting and motivates learners to continue | **Partially supported** — positive average effects, but variable, subject to the novelty effect and possible negative effects; respondents accept game elements that reflect real achievement | Literature review (S3–S10); interviews R01–R05 |
+| H4 | Learning on existing platforms (Coursera, Udemy) is perceived as monotonous | **Partially supported** — for passive, text-based course formats, not for the platforms as a whole | Literature review (S11, S12); interviews R01–R04 |
 
-This table will be updated with verified findings in `docs/02-relevance-evidence/` and `docs/03-literature-review/`.
+Details are given in the [evidence summary](../02-relevance-evidence/evidence-summary.md) (section 3) and the [literature review](../03-literature-review/literature-review.md) (section 7). H3 is the central hypothesis of the project: it is evaluated with users according to the [verification and evaluation plan](../09-verification-plan/verification-and-evaluation-plan.md).
 
 ## 3. Target users
 
@@ -85,19 +84,21 @@ To develop a web-based open marketplace of educational electronic courses that s
 - Target audience of the course (e.g. age group).
 - Tests with answer options, passing score and number of attempts.
 - Submitting a course for moderation.
-- Author dashboard: own courses, students, income, answers to questions.
+- Author dashboard: own courses, students and their progress, statistics of test questions, income, answers to questions.
 
 **Learning**
 
-- Enrolment and payment in test mode (simulated payments in USD, no real transactions).
-- Lesson page, video player and course progress.
+- Enrolment in free courses and payment for paid courses in test mode (simulated payments in USD, no real transactions); the platform keeps a commission set by the administrator.
+- Lesson page with the embedded video player (videos are hosted on YouTube or Vimeo) and course progress.
 - Questions on lessons, reviews with ratings.
 - PDF certificate after course completion.
 - Student dashboard: my courses, certificates, purchases.
 
 **Administration**
 
-- Course moderation, author applications, complaints, categories.
+- Course moderation, author applications, reports about content, categories.
+- Achievements: creating, editing and deactivating them.
+- Platform settings: commission percentage and the time zone of the weekly leaderboard.
 
 **Notifications**
 
