@@ -73,7 +73,7 @@ Examples of the REST API behind these screens are in [`api-examples.md`](api-exa
 
 ### Scenario 3 — Student learns: lesson, test, certificate
 
-1. **3.1 Lesson.** Video player, course syllabus with progress, **+10 XP** feedback after the lesson is completed, and questions to the author under the lesson.
+1. **3.1 Lesson.** Video player (in the system, the YouTube or Vimeo player is embedded here, see ADR-0004), course syllabus with progress, **+10 XP** feedback after the lesson is completed, and questions to the author under the lesson.
 2. **3.2 Test result.** Score 80% (4 of 5) against a passing score of 70%, attempt 1 of 3, **+20 XP**, and a review of the answers.
 3. **3.3 Course completed.** **+200 XP**, the new level (5), the unlocked achievement "Perfect test", a certificate preview (student name, course, author, date and unique number), PDF download, and a form to rate and review the course.
 
@@ -131,7 +131,7 @@ Examples of the REST API behind these screens are in [`api-examples.md`](api-exa
 |---|---|
 | FR-AUT-01, FR-ADM-02 (author applications) | Secondary flow; only the admin menu item is shown |
 | FR-ADM-04 (categories), FR-ADM-06 (achievements) | Admin CRUD screens; only the menu items are shown |
-| FR-AUT-09 (students' progress for the author) | Will be added to the author dashboard |
+| FR-AUT-09 (students' progress and test question statistics for the author) | Will be added to the author dashboard |
 | FR-NOT-01, FR-NOT-02 (notifications) | Notification centre and emails are not drawn |
 | FR-ACC-06 (editing the profile later) | Only the preset at sign-up is shown |
 | FR-UI-02 (mobile layout) | *Could* priority; desktop only in version 1 |

@@ -19,7 +19,7 @@ The plan has two parts:
 |---|---|---|
 | A working web-based course marketplace | All acceptance criteria of the Must requirements pass; non-functional targets are met | 3.2, 3.5 |
 | The full course lifecycle: creation → moderation → learning → certification | End-to-end scenarios that go through all roles in one run | 3.3 |
-| Gamification makes learning more engaging | Two-week study with two groups: the same course with and without gamification | 4 |
+| Gamification makes learning more engaging | Four-week study with two groups: the same course with and without gamification | 4 |
 | Usable for learners | System Usability Scale (SUS) in both groups, compared with the published average | 4.7 |
 
 ## 2. Overview of activities
@@ -30,7 +30,7 @@ The plan has two parts:
 | End-to-end and manual tests | Do complete user scenarios work in the browser? | Automated browser tests and checklists | Before pre-defense 2 and the final pre-defense |
 | Performance tests | Does the system meet the response-time targets under the reference load? | Load tests | Before the final pre-defense |
 | Code and configuration review | Are structure, security and maintainability rules followed? | Pull request review checklist, linters | Every pull request |
-| User study | Does gamification increase engagement compared with the baseline? Is the system usable? | Two groups, two weeks, system data and questionnaires | After the system is deployed |
+| User study | Does gamification increase engagement compared with the baseline? Is the system usable? | Two groups, four weeks, system data and questionnaires | After the system is deployed |
 
 ## 3. Verification
 
@@ -38,14 +38,14 @@ The plan has two parts:
 
 The tools are proposed for implementation and may be replaced by equivalents; the test levels and criteria do not change.
 
-| Level | Code | What is tested | Proposed tools | Where it runs |
-|---|---|---|---|---|
-| Unit test | UT | Domain logic without the database: XP, level formula, streak calculation, achievement rules, leaderboard ranking, commission | Go `testing` package | Locally and in CI on every pull request |
-| Integration / API test | IT | REST endpoints with a real PostgreSQL database: requests, responses, roles, transactions | Go `testing`, `net/http/httptest`, PostgreSQL in Docker | Locally and in CI on every pull request |
-| End-to-end test | E2E | User scenarios through the web interface | Playwright | Full system started with Docker Compose |
-| Manual test | MT | Video playback, browsers, accessibility, local setup | Checklists in the test report | Before each milestone |
-| Performance test | PT | Response times and errors under the reference load | k6 | Performance environment (section 3.6) |
-| Review | SR | Module structure, security rules, configuration, OpenAPI | Pull request checklist; `gofmt`, ESLint | Every pull request |
+| Level | Code | What is tested | Proposed tools | Location in the repository | Where it runs |
+|---|---|---|---|---|---|
+| Unit test | UT | Domain logic without the database: XP, level formula, streak calculation, achievement rules, leaderboard ranking, commission | Go `testing` package | Next to the code (`*_test.go` in `backend/internal/`) | Locally and in CI on every pull request |
+| Integration / API test | IT | REST endpoints with a real PostgreSQL database: requests, responses, roles, transactions | Go `testing`, `net/http/httptest`, PostgreSQL in Docker | `backend/tests/integration/` | Locally and in CI on every pull request |
+| End-to-end test | E2E | User scenarios through the web interface | Playwright | `tests/e2e/` | Full system started with Docker Compose |
+| Manual test | MT | Video playback, browsers, accessibility, local setup | Checklists in the test report | Test report | Before each milestone |
+| Performance test | PT | Response times and errors under the reference load | k6 | `tests/load/`; seed data in `tests/test-data/` | Performance environment (section 3.6) |
+| Review | SR | Module structure, security rules, configuration, OpenAPI | Pull request checklist; `gofmt`, ESLint | — | Every pull request |
 
 CI runs in GitHub Actions. A pull request can be merged only if unit and integration tests pass.
 
@@ -173,7 +173,7 @@ If a target is not met, the bottleneck is fixed (for the leaderboard, the fallba
 
 ### 4.2 Design
 
-A between-groups comparison: participants are randomly assigned to two groups and take the same course in the same system for two weeks.
+A between-groups comparison: participants are randomly assigned to two groups and take the same course in the same system for four weeks.
 
 | | Experimental group | Control group (baseline) |
 |---|---|---|
@@ -213,18 +213,18 @@ A short course created by the team: 2–3 modules with video lessons (YouTube or
 | Day | Step |
 |---|---|
 | 0 | Short briefing with the same text for both groups. It describes the study as testing a learning platform and does not mention gamification. Consent and pre-questionnaire: field of study, online course experience, prior knowledge of the topic and interest in it (1–7) |
-| 1–14 | Participants study at their own pace. The team sends no reminders to either group; only the system's own notifications are active |
-| 15 | Post-questionnaire (section 4.7). Optional 10-minute interview with 2–3 participants from each group |
+| 1–28 | Participants study at their own pace. The team sends no reminders to either group; only the system's own notifications are active |
+| 29 | Post-questionnaire (section 4.7). Optional 10-minute interview with 2–3 participants from each group |
 | After the study | Debriefing: participants are told about the two groups; the control group can have gamification switched on |
 
 ### 4.7 Outcome metrics
 
 | ID | Metric | Definition | Source | Groups |
 |---|---|---|---|---|
-| O1 | Course completion rate | Share of participants who completed the course (FR-LRN-08) by day 14 | Database | Both |
-| O2 | Course progress | Percentage of completed course items on day 14 (FR-LRN-07); median per group | Database | Both |
-| O3 | Active days | Number of different days in days 1–14 with at least one completed lesson or submitted test attempt, by the participant's local date (the same rule as FR-GAM-04) | Database | Both |
-| O4 | Return in week 2 | Share of participants active in days 1–7 who are also active in days 8–14 | Database | Both |
+| O1 | Course completion rate | Share of participants who completed the course (FR-LRN-08) by day 28 | Database | Both |
+| O2 | Course progress | Percentage of completed course items on day 28 (FR-LRN-07); median per group | Database | Both |
+| O3 | Active days | Number of different days with at least one completed lesson or submitted test attempt, by the participant's local date (the same rule as FR-GAM-04); reported for each of the four weeks and in total | Database | Both |
+| O4 | Return in the second half | Share of participants active in weeks 1–2 who are also active in weeks 3–4 | Database | Both |
 | O5 | Learning results | Share of tests passed at the first attempt; average best test score | Database | Both |
 | O6 | Usability | SUS score, 0–100 [V1] | Post-questionnaire | Both |
 | O7 | Interest and enjoyment | Mean of the 7-item interest/enjoyment subscale of the Intrinsic Motivation Inventory, 1–7 [V4] | Post-questionnaire | Both |
@@ -240,7 +240,7 @@ The expected results are fixed before the study, so that they are not adjusted t
 
 | ID | Expectation | Metrics |
 |---|---|---|
-| X1 | The experimental group has a higher completion rate, more progress, more active days and better return in week 2 than the control group | O1–O4 |
+| X1 | The experimental group has a higher completion rate, more progress, more active days and better return in the second half than the control group | O1–O4 |
 | X2 | Learning results in the experimental group are not lower than in the control group (gamification does not encourage rushing through tests) | O5 |
 | X3 | The median SUS score is at least 68 in both groups | O6 |
 | X4 | Interest and enjoyment are higher in the experimental group | O7 |
@@ -257,7 +257,8 @@ The expected results are fixed before the study, so that they are not adjusted t
 |---|---|
 | Small sample | Descriptive reporting only; no claims of statistical significance |
 | Volunteers are more motivated than typical learners | Recorded in the limitations; random assignment keeps the groups comparable |
-| Novelty effect: game elements are attractive at first, then the effect fades (literature review, Q3) | Two weeks instead of one; activity in week 2 is measured separately (O4) |
+| Novelty effect: the effect of game elements is strongest at first; in a 14-week study it began to decline after about four weeks (Rodrigues et al., 2022; [literature review](../03-literature-review/literature-review.md), section 5) | The study lasts four weeks; active days are reported per week (O3) and for the second half separately (O4), so a decline becomes visible. The study is still shorter than a semester, so a long-term effect cannot be shown |
+| Participants leave the study for reasons unrelated to the system (exams, illness) | Dropout is part of the results (O1, O4); participants who stop are asked for the reason in a short message |
 | Participants from different groups talk to each other | Participants are asked not to discuss the study until it ends |
 | The team created the course and runs the study | The same briefing text, no reminders, metrics calculated automatically from the database |
 | Questionnaires are translated | Both team members check the translation; the translated items are published with the results |
@@ -280,7 +281,7 @@ The dates of milestones M2–M4 are not fixed yet (see [milestones](../10-projec
 | End-to-end and manual tests | For implemented features before pre-defense 2; all scenarios before the final pre-defense |
 | Performance tests | After the core functionality and the gamification subsystem are implemented |
 | Preparation of the study course and the questionnaires | Before the study; course content can be prepared in parallel with implementation |
-| User study (2 weeks) | After deployment and passed end-to-end tests; finished at least 1 week before the final pre-defense, to leave time for analysis |
+| User study (4 weeks) | After deployment and passed end-to-end tests; finished at least 1 week before the final pre-defense, to leave time for analysis. Because of its length, the study has to start at least 5 weeks before the final pre-defense |
 | Test report and evaluation report | Before the final pre-defense, in `docs/09-verification-plan/` |
 
 ## 6. Open points
