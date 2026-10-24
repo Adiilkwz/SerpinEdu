@@ -70,7 +70,7 @@ flowchart LR
     DIP11 --> DIP13
     FIX[DIP-16 – DIP-20 Consistency fixes] --> DIP13
     DIP13 --> DIP14[DIP-14 README]
-    DIP14 --> DIP15[DIP-15 Tag pre-defense-1]
+    DIP14 --> DIP15[DIP-15 Tag prob-period-1]
 ```
 
 These dependencies are also recorded in YouTrack as "depends on" links between tasks.

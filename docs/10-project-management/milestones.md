@@ -4,7 +4,7 @@
 
 | # | Milestone | Date | Git tag | Expected result |
 |---|---|---|---|---|
-| M1 | **Pre-defense 1** | 24.10.2026 | `pre-defense-1` | Analysis, requirements, architecture, prototype and verification plan completed |
+| M1 | **Pre-defense 1** | 24.10.2026 | `prob-period-1` | Analysis, requirements, architecture, prototype and verification plan completed |
 | M2 | **Pre-defense 2** | TBD | `pre-defense-2` | TBD |
 | M3 | **Final pre-defense** | TBD | `final-pre-defense` | TBD |
 | M4 | **Defense** | TBD | — | Final version of the system and thesis |
